@@ -28,6 +28,8 @@ kotlin {
         api projects.redwoodTreehouseGuest
         api projects.samples.emojiSearch.presenter
         implementation projects.samples.emojiSearch.schema.compose.protocol
+        implementation npm('globalize', '1.7.0')
+        implementation npm('cldrjs', '0.5.5')
       }
     }
 
@@ -45,4 +47,8 @@ kotlin {
 
 zipline {
   mainFunction = 'com.example.redwood.emojisearch.treehouse.preparePresenters'
+}
+
+rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin) {
+  rootProject.extensions.getByType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootExtension).ignoreScripts = false
 }

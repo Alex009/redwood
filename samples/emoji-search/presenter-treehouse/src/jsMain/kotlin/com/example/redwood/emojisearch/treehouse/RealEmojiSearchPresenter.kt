@@ -33,7 +33,11 @@ class RealEmojiSearchPresenter(
     widgetVersion = 0U,
   )
 
+  val leakMemory = mutableListOf<Any>()
+
   override fun launch(): ZiplineTreehouseUi {
+    leakMemory += likelySubtags()
+
     val navigator = object : Navigator {
       override fun openUrl(url: String) {
         hostApi.openUrl(url)

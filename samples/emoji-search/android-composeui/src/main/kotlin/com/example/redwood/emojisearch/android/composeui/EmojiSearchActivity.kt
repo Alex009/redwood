@@ -100,6 +100,7 @@ class EmojiSearchActivity : ComponentActivity() {
     )
 
     treehouseApp.start()
+    println("XXXXXX " + treehouseApp.zipline!!.quickJs.memoryUsage)
 
     return treehouseApp
   }
