@@ -17,13 +17,10 @@ package app.cash.redwood.layout.uiview
 
 import app.cash.redwood.Modifier
 import app.cash.redwood.layout.api.Constraint
-import app.cash.redwood.layout.api.CrossAxisAlignment
-import app.cash.redwood.layout.api.MainAxisAlignment
 import app.cash.redwood.layout.api.Overflow
-import app.cash.redwood.layout.widget.FlexContainer
+import app.cash.redwood.layout.widget.yoga.YogaFlexContainer
 import app.cash.redwood.ui.Default
 import app.cash.redwood.ui.Density
-import app.cash.redwood.ui.Margin
 import app.cash.redwood.widget.ChangeListener
 import app.cash.redwood.widget.UIViewChildren
 import app.cash.redwood.yoga.FlexDirection
@@ -34,8 +31,10 @@ import platform.darwin.NSInteger
 
 internal class UIViewFlexContainer(
   private val direction: FlexDirection,
-) : FlexContainer<UIView>, ChangeListener {
+) : YogaFlexContainer<UIView>, ChangeListener {
   private val yogaView = YogaUIView()
+  override val rootNode: Node get() = yogaView.rootNode
+  override val density: Density get() = Density.Default
   override val value: UIView get() = yogaView
   override val children = UIViewChildren(
     value,
@@ -67,27 +66,8 @@ internal class UIViewFlexContainer(
     yogaView.height = height
   }
 
-  override fun margin(margin: Margin) {
-    with(yogaView.rootNode) {
-      with(Density.Default) {
-        marginStart = margin.start.toPx().toFloat()
-        marginEnd = margin.end.toPx().toFloat()
-        marginTop = margin.top.toPx().toFloat()
-        marginBottom = margin.bottom.toPx().toFloat()
-      }
-    }
-  }
-
   override fun overflow(overflow: Overflow) {
     yogaView.scrollEnabled = overflow == Overflow.Scroll
-  }
-
-  override fun crossAxisAlignment(crossAxisAlignment: CrossAxisAlignment) {
-    yogaView.rootNode.alignItems = crossAxisAlignment.toAlignItems()
-  }
-
-  override fun mainAxisAlignment(mainAxisAlignment: MainAxisAlignment) {
-    yogaView.rootNode.justifyContent = mainAxisAlignment.toJustifyContent()
   }
 
   override fun onEndChanges() {

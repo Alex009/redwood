@@ -11,8 +11,7 @@ redwoodBuild {
 }
 
 dependencies {
-  api projects.redwoodLayoutWidget
-  implementation projects.redwoodYoga
+  api projects.redwoodLayoutWidgetYoga
   implementation libs.androidx.core
   testImplementation projects.redwoodLayoutSharedTest
   testImplementation libs.testParameterInjector

@@ -1,0 +1,17 @@
+import app.cash.redwood.buildsupport.KmpTargets
+
+apply plugin: 'org.jetbrains.kotlin.multiplatform'
+
+kotlin {
+  KmpTargets.addAllTargets(project, true /* skipJs */)
+
+  sourceSets {
+    commonMain {
+      kotlin.srcDir(app.cash.redwood.buildsupport.FlexboxHelpers.get(tasks, 'app.cash.redwood.layout.widget.yoga').get())
+      dependencies {
+        api projects.redwoodLayoutWidget
+        api projects.redwoodYoga
+      }
+    }
+  }
+}
