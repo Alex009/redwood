@@ -16,6 +16,8 @@
 package app.cash.redwood.gradle
 
 import org.gradle.api.Project
+import org.gradle.api.file.Directory
+import org.gradle.api.provider.Provider
 
 internal fun Project.redwoodDependency(artifactId: String): Any {
   // Indicates when the plugin is applied inside the Redwood repo to Redwood's own modules. This
@@ -27,4 +29,8 @@ internal fun Project.redwoodDependency(artifactId: String): Any {
   } else {
     "app.cash.redwood:$artifactId:$redwoodVersion"
   }
+}
+
+internal fun Project.redwoodGeneratedDir(name: String): Provider<Directory> {
+  return layout.buildDirectory.dir("generated/redwood/$name")
 }

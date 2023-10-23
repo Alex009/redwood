@@ -38,7 +38,12 @@ public class RedwoodComposePlugin : KotlinCompilerPluginSupportPlugin {
   override fun apply(target: Project) {
     super.apply(target)
 
-    extension = target.extensions.create(extensionName, RedwoodComposeExtension::class.java)
+    extension = RedwoodComposeExtensionImpl(target)
+    target.extensions.add(
+      RedwoodComposeExtension::class.java,
+      extensionName,
+      extension,
+    )
 
     target.plugins.withId("org.jetbrains.compose") {
       throw IllegalStateException(
