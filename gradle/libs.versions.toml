@@ -1,5 +1,5 @@
 [versions]
-kotlin = "1.9.20"
+kotlin = "1.9.21"
 kotlinx-coroutines = "1.7.3"
 kotlinx-serialization = "1.6.1"
 androidx-activity = "1.8.1"
@@ -49,7 +49,7 @@ androidx-test-uiautomator = "androidx.test.uiautomator:uiautomator:2.2.0"
 
 google-material = { module = "com.google.android.material:material", version = "1.10.0" }
 
-jetbrains-compose-compiler = "org.jetbrains.compose.compiler:compiler:1.5.3"
+jetbrains-compose-compiler = "org.jetbrains.compose.compiler:compiler:1.5.4"
 jetbrains-compose-gradlePlugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "jbCompose" }
 jetbrains-compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "jbCompose" }
 jetbrains-compose-material = { module = "org.jetbrains.compose.material:material", version.ref = "jbCompose" }
@@ -80,6 +80,6 @@ coil-core = { module = "io.coil-kt:coil", version.ref = "coil" }
 turbine = "app.cash.turbine:turbine:1.0.0"
 ktlint = "com.pinterest:ktlint:0.50.0"
 googleJavaFormat = "com.google.googlejavaformat:google-java-format:1.18.1"
-poko-gradlePlugin = "dev.drewhamilton.poko:poko-gradle-plugin:0.15.0"
+poko-gradlePlugin = "dev.drewhamilton.poko:poko-gradle-plugin:0.15.1"
 
 lint-core = { module = "com.android.tools.lint:lint", version.ref = "lint" }
